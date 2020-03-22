@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>agent-test</artifactId>
+    <groupId>com.shl.agent</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>agent-case</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <!--自动添加META-INF/MANIFEST.MF -->
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+            <manifestEntries>
+              <Project-name>${project.name}</Project-name>
+              <Project-version>${project.version}</Project-version>
+              <Premain-Class>com.shl.agent.AgentDemo</Premain-Class>
+              <!--<Agent-Class>com.shl.agent.AgentDemo</Agent-Class>-->
+              <Boot-class-Path>javassist-3.12.1-GA.jar</Boot-class-Path>
+              <!-- Can-Redefine-Classes:不允许对class修改两次 -->
+              <Can-Redefine-Classes>false</Can-Redefine-Classes>
+              <!--<Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+            </manifestEntries>
+          </archive>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
